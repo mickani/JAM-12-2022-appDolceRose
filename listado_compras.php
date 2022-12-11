@@ -2,7 +2,7 @@
 <?php include("header.php") ?>
 
 <hr class="border border-success">
-<h2 align="center" class="text-success">LISTA DE COMPRAS</h2>
+<h2 align="center" class="text-success p-4">LISTA DE COMPRAS</h2>
 <hr class="border border-success">
 
 <div class="container text-center">
