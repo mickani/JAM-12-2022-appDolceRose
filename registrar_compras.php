@@ -66,31 +66,18 @@
                     </tr>
                 </thead>
                 <tbody>
-
-                    <?php
-                        $query = "SELECT * FROM detalles_compras";
-                        $result_compras = mysqli_query($conn, $query);
-
-                        while($row = mysqli_fetch_array($result_compras)) { ?>
-
                     <tr>
-                        <!-- ¡¡¡ REVISAR PARA Q TRAIGA REGISTROS DE LA BD !!! -->
-                        <td scope="col"><?php echo $row['id']?></td>
-                        <td scope="col"><?php echo $row['nombre_proveedor']?></td>
-                        <td scope="col"><?php echo $row['materia_prima']?></td>
-                        <td scope="col"><?php echo $row['cantidad']?></td>
-                        <td scope="col"><?php echo $row['costo']?></td>
-                        <td scope="col"><?php echo $row['fecha']?></td>
+                        <td scope="col">ej 1</td>
+                        <td scope="col">ej proveedor</td>
+                        <td scope="col">ej m. prima</td>
+                        <td scope="col">ej cant</td>
+                        <td scope="col">ej costo</td>
+                        <td scope="col">ej fecha</td>
                         <td scope="col">
-                            <a class="btn btn-secondary btn-sm" href="registrar_compras_modificar.php?id=<?php echo $row['id']?>"><i
-                                    class="fas fa-pen-alt fa-lg"></i></a>
-                            <a class="btn btn-danger btn-sm"
-                                href="registrar_compras_eliminar.php?id=<?php echo $row['id']?>"><i
-                                    class="fas fa-trash-alt fa-lg"></i></a>
+                            <a class="btn btn-secondary btn-sm" href="#"><i class="fas fa-pen-alt fa-lg"></i></a>
+                            <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash-alt fa-lg"></i></a>
                         </td>
                     </tr>
-
-                    <?php } ?>
                 </tbody>
             </table>
         </div>
