@@ -49,11 +49,12 @@ create table detalles_compras(
     foreign key(id_materia_prima) references materias_primas(id_materia_prima)
 );
 
-create table elaboracion(
+create table elaboraciones(
 	id_elaboracion int auto_increment,
+    fecha_elaboracion date not null,
     id_producto int not null,
-    cantidad_elaborada int not null,
     costo_unitario_producto double not null,
+    cantidad_elaborada int not null,
     primary key(id_elaboracion),
     foreign key(id_producto) references productos(id_producto)
 );

@@ -1,43 +1,76 @@
 <?php include("db.php") ?>
 <?php include("header.php") ?>
 
+    <?php 
+        $id_prod = 0;
+        if(isset($_POST['id_producto'])){
+            $id_prod = $_POST['id_producto'];
+        }
+    ?>
+
     <!-- TITLE -->
     <div class="row text-center">
-        <h3>Mantenedor de Materias Primas</h3>
+        <h3>Recetas de Productos</h3>
     </div>
     
     <main class="container-fluid p-2">
         <div class="row">
             <div class="col-md-4">
                 <!-- FORM -->
-                <div class="card card-body">
-                    <form action="" name="frm_materias_primas" id="frm_materias_primas" method="POST">
+                <form action="" name="frm_recetas_productos" id="frm_recetas_productos" method="POST">
+                    <!-- SELECT PRODUCTO -->
+                    <div class="form-group my-2">
+                        <label for="cbo_productos" class="form-label">Seleccione un producto:</label>
+                        <select name="cbo_productos" id="cbo_productos" class="form-select" onchange="cbo_productos_change()">
+                            <?php
+                                $query = "SELECT id_producto, nombre_producto FROM productos ORDER BY nombre_producto ";
+                                $result = mysqli_query($conn, $query);
+                                while ($valores = mysqli_fetch_array($result)) {
+                                    // $selected = "";
+                                    // if ($valores['id_producto'] == $_POST['id_producto']) {
+                                    //     $selected = 'selected="selected"';
+                                    // }
+                                    ?>
+                                    <option value="<?php echo $valores['id_producto'] ?>"><?php echo $valores["nombre_producto"] ?></option>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="card card-body">
                         <div class="form-group">
                             <label for="id_materia_prima" class="form-label">ID:</label>
                             <input type="text" name="id_materia_prima" id="id_materia_prima" class="form-control" disabled>
                         </div>
-                        <div class="form-group">
-                            <label for="nombre_materia_prima" class="form-label">Nombre materia prima:</label>
-                            <input type="text" name="nombre_materia_prima" id="nombre_materia_prima" class="form-control" autofocus>
+                        <!-- SELECT MATERIAS PRIMAS -->
+                        <div class="form-group mt-2">
+                            <label for="cbo_materias_primas" class="form-label">Seleccione una materia prima:</label>
+                            <select name="cbo_materias_primas" id="cbo_materias_primas" class="form-select">
+                                <?php
+                                    $query = "SELECT id_materia_prima, nombre_materia_prima FROM materias_primas ORDER BY nombre_materia_prima ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($valores = mysqli_fetch_array($result)) {
+                                        $selected = "";
+                                        if ($valores['id_materia_prima'] == $_POST['id_materia_prima']) {
+                                            $selected = 'selected="selected"';
+                                        }
+                                        ?>
+                                        <option value="<?php $valores['id_materia_prima'] ?>"><?php echo $valores["nombre_materia_prima"] ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="stock_actual" class="form-label">Stock actual:</label>
-                            <input type="number" name="stock_actual" id="stock_actual" class="form-control" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label for="stock_minimo" class="form-label">Stock mínimo:</label>
-                            <input type="number" name="stock_minimo" id="stock_minimo" class="form-control" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label for="costo" class="form-label">Costo:</label>
-                            <input type="number" name="costo" id="costo" class="form-control" autofocus>
+                        <div class="form-group mt-2">
+                            <label for="cantidad" class="form-label">Cantidad:</label>
+                            <input type="number" name="cantidad" id="cantidad" class="form-control" autofocus>
                         </div>
                         <div class="col-auto mt-2 text-center">
-                            <button type="button" onclick="limpiar_frm_materias_primas()" class="btn btn-info btn-block">Limpiar</button>
-                            <button type="button" onclick="guardar_materia_prima()" class="btn btn-success btn-block">Guardar</button>
+                            <button type="button" onclick="limpiar_frm_recetas_productos()" class="btn btn-info btn-block">Limpiar</button>
+                            <button type="button" onclick="agregar_materia_prima()" class="btn btn-success btn-block">Agregar</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
             <!-- TABLE -->
             <div class="col-md-8">
@@ -46,9 +79,7 @@
                         <tr>
                             <th class="text-center">ID</th>
                             <th class="text-center">Materia Prima</th>
-                            <th class="text-center">Stock Actual</th>
-                            <th class="text-center">Stock Mínimo</th>
-                            <th class="text-center">Costo</th>
+                            <th class="text-center">Cantidad</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -60,9 +91,7 @@
                             <tr>
                                 <td><?php echo $row['id_materia_prima']; ?></td>
                                 <td><?php echo $row['nombre_materia_prima']; ?></td>
-                                <td class="text-end"><?php echo $row['stock_actual']; ?></td>
-                                <td class="text-end"><?php echo $row['stock_minimo']; ?></td>
-                                <td class="text-end"><?php echo $row['costo']; ?></td>
+                                <td class="text-end"><?php echo $row['cantidad']; ?></td>
                                 <td class="text-center">
                                     <a type="button" onclick="editar_materia_prima(<?php echo $row['id_materia_prima']?>)" class="btn btn-secondary">
                                         <i class="fas fa-marker"></i>
@@ -81,19 +110,37 @@
 
     <script type="text/javascript">
 
-        function limpiar_frm_materias_primas(){
-            if(confirm("¿Limpiar el formulario?")){
-                var id_materia_prima = document.getElementById("id_materia_prima");
-                var nombre_materia_prima = document.getElementById("nombre_materia_prima");
-                var stock_actual = document.getElementById("stock_actual");
-                var stock_minimo = document.getElementById("stock_minimo");
-                var costo = document.getElementById("costo");
-                id_materia_prima.value = "";
-                nombre_materia_prima.value = "";
-                stock_actual.value = "";
-                stock_minimo.value = "";
-                costo.value = "";
-            }
+        $(document).ready(function() {
+            var cbo_productos = document.getElementById("cbo_productos");
+            cbo_productos.selectedIndex = -1;
+            alert("ready!");
+        });
+
+        $('#cbo_producto').change(function() {
+            var val = $("#cbo_producto option:selected").text();
+            alert(val);
+        });
+
+        $('#cbo_producto').change(function() {
+            var val = $("#cbo_producto option:selected").text();
+            alert(val);
+        });
+
+        document.getElementById("cbo_producto").addEventListener('change', (event) => {
+            alert(event.target.value);
+        });
+
+        function cbo_productos_change(){
+            var cbo_productos = document.getElementById("cbo_productos");
+            alert(cbo_productos.selectedOptions[0].value);
+            alert(cbo_productos.selectedOptions[0].text);
+        }
+
+        function limpiar_frm_recetas_productos(){
+            var cbo_materias_primas = document.getElementById("cbo_materias_primas");
+            var cantidad = document.getElementById("cantidad");
+            cbo_materias_primas.selectedIndex = -1;
+            cantidad.value = "";
         }
 
         function eliminar_materia_prima(id){
@@ -142,7 +189,7 @@
             });
         }
 
-        function guardar_materia_prima(){
+        function agregar_materia_prima(){
             var id_materia_prima = document.getElementById("id_materia_prima");
             var nombre_materia_prima = document.getElementById("nombre_materia_prima");
             var stock_actual = document.getElementById("stock_actual");

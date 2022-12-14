@@ -1,12 +1,6 @@
 <?php include("db.php") ?>
 <?php include("header.php") ?>
-<?php
-if (isset($_POST)) {
-    $id_producto = $_POST['producto'];
-    $id_materia_prima = $_POST['mp'];
 
-}
-?>
 
 
 
@@ -26,23 +20,20 @@ if (isset($_POST)) {
 
             <!-- TABLE -->
             <div class="form-group">
-                <h5><label for="id_producto" class="form-label">Seleccione producto:</label>
-                    <select name=producto onchange=this.form.submit()>
+                <h5><label for="id_producto" class="form-label">Receta:</label>
+                    <select name=producto id=id_producto onchange= this.form.submit()>
                         <option value="">Elige un producto</option>
                         <?php
                         $query = "SELECT * FROM productos ORDER BY id_producto";
                         $result = mysqli_query($conn, $query);
                         while ($valores = mysqli_fetch_array($result)) {
-                            if ($_POST["producto"] == $valores['id_producto']) {
-                                
-                                echo '<option value="' . $valores['id_producto'] . '" selected>' . $valores['nombre_producto'] . '</option>';
-                            }else{
-                            echo '<option value="' . $valores['id_producto'] . '">' . $valores['nombre_producto'] . '</option>';}
+                            echo '<option value="' . $valores['id_producto'] . '">' . $valores['nombre_producto'] . '</option>';
                         }
                         ?>
                     </select>
-
-
+                    
+                    <?php
+                    $id_producto = $_POST['producto'];?>
                 </h5>
             </div>
 
@@ -54,23 +45,17 @@ if (isset($_POST)) {
                     </div>
                     <div class="form-group">
                         <label for="nombre_materia_prima" class="form-label">Seleccione materia prima</label>
-                        <select name=mp id=mp>
+                        <select name=mp id=mp >
                             <option value="">Materia prima</option>
                             <?php
-                            $query = "SELECT * FROM materias_primas ORDER BY id_materia_prima";
+                            $query = "SELECT * FROM materias_primas ORDER BY id_materia_prima ";
                             $result = mysqli_query($conn, $query);
                             while ($valores = mysqli_fetch_array($result)) {
-                                if ($_POST["mp"] == $valores['id_materia_prima']) {
-                                
-                                    echo '<option value="' . $valores['id_materia_prima'] . '" selected>' . $valores['nombre_materia_prima'] . '</option>';
-                                }else{
                                 echo '<option value="' . $valores['id_materia_prima'] . '">' . $valores['nombre_materia_prima'] . '</option>';
-                                }
                             }
                             ?>
                         </select>
-
-
+                        <?php $id_materia_prima = $_POST['mp']; ?>
                     </div>
                     <div class="form-group">
                         <label for="id_materia_prima">ID:</label>
@@ -81,9 +66,7 @@ if (isset($_POST)) {
                     <div class="form-group">
                         <label for="cantidad" class="form-label">Cantidad:</label>
                         <input type="text" name="cantidad" id="cantidad" class="form-control" autofocus>
-                        <?php $cantidad = $_POST['cantidad'];
-                        $GLOBALS['cantidad'] = $cantidad;
-                        ?>
+                        <?php $cantidad = $_POST['cantidad']; ?>
                     </div>
                     <div class="col-auto mt-2 text-center">
                         <button type="button" class="btn btn-info btn-block">Limpiar</button>
@@ -93,7 +76,7 @@ if (isset($_POST)) {
                 </div>
             </div>
             <?php
-
+            
             if ($_POST['btn_guardar'] == 'guardar') {
                 $query = "INSERT INTO `materias_primas_x_productos` (`id_producto`, `id_materia_prima`, `cantidad`) VALUES ('$id_producto', '$id_materia_prima', '$cantidad') ";
                 $result = mysqli_query($conn, $query);
@@ -117,13 +100,13 @@ if (isset($_POST)) {
                         $result = mysqli_query($conn, $query);
                         $query1 = "SELECT nombre_producto FROM productos WHERE id_producto=$id_producto";
                         $result1 = mysqli_query($conn, $query1);
-                        $row1 = mysqli_fetch_assoc($result1);
-                        $nombre_p = $row1['nombre_producto'];
+                        $row1= mysqli_fetch_assoc($result1);
+                         $nombre_p=$row1['nombre_producto'];
 
-                        echo "<h5>Producto: $nombre_p<h5>";
+                        echo"<h5>Producto: $nombre_p<h5>";
                         while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tr>
-
+                                
                                 <td><?php echo $row['id_materia_prima']; ?></td>
                                 <td><?php
                                     $id_materia_prima = $row['id_materia_prima'];
@@ -153,9 +136,9 @@ if (isset($_POST)) {
 
         </div>
     </main>
-
+    
 </form>
-
+<?php echo "producto: $id_producto <br> mp: $id_materia_prima<br> cant: $cantidad";?>
 
 
 <?php include("footer.php") ?>
