@@ -6,11 +6,55 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <title>Dolce Rose</title>
-        <link rel="stylesheet" href="estilos.css">
         <!-- Bootstrap 5.2.3 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <!-- FONT AWESOME 5.6.3 -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link href="jquery/select2.min.css" rel="stylesheet" type="text/css" />
+       
+        <style type="text/css">
+            .divSelect{
+                margin-bottom: 0.5rem;
+            }
+            .select2-container .select2-selection--single {
+                
+                height: 38px !important;
+                
+                padding: 3px !important;
+                
+            }
+            .select2-container--default .select2-selection--single {
+               
+                border: 1px solid #ced4da ;
+                
+            }
+            .select2{
+                width: 100% !important;
+            }
+            .select2-selection__arrow {
+                top: 6px !important;
+            }
+            .borderError{
+                border-color:#ff0000 !important;
+            }
+
+            .cols {
+             height: 100%;
+            }
+            .col1 {
+                width: 60%;
+                padding: 5px;
+            }
+            .col2 {
+                width: 36%;
+                padding: 5px;
+            }
+            .col1,
+            .col2 {
+                display: inline-block;
+                height: 20%;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
