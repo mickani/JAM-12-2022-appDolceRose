@@ -158,4 +158,4 @@ if (isset($_POST)) {
 
 
 
-<?php include("footer.php") ?>
+<?php include("footer2.php") ?>

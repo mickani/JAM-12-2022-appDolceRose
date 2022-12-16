@@ -141,4 +141,4 @@
 <?php echo "producto: $id_producto <br> mp: $id_materia_prima<br> cant: $cantidad";?>
 
 
-<?php include("footer.php") ?>
+<?php include("footer2.php") ?>

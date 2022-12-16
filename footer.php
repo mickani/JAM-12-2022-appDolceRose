@@ -1,45 +1,33 @@
         <footer>
             <div class="container_footer">
-                <!-- <div class="row">
-                    <div class="col-4">
-                        <div class="desarrolladores">
-                            <p>Dolce Rose © 2022</p>
-                        </div>
-                    </div>
 
-                    <div class="col-4">
-                        <div class="desarrolladores">
-                            <p>Dolce Rose © 2022</p>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="desarrolladores">
-                            <p>Dolce Rose © 2022</p>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="box_footer">
                     <div class="desarrolladores">
-                        <p>Dolce Rose © 2022</p>
+                        <p><b>Mari</b> (Backend) -
+                            <i>mari@hotmail</i>
+                        </p>
+                        </p>
                     </div>
                 </div>
 
                 <div class="box_footer">
                     <div class="desarrolladores">
-                        <p>Dolce Rose © 2022</p>
+                        <p><b>Mica</b> (Frontend) - <i>micka@hotmail</i></p>
                     </div>
                 </div>
 
                 <div class="box_footer">
                     <div class="desarrolladores">
-                        <p>Dolce Rose © 2022</p>
+                        <p><b>Matías</b> (Backend) -
+                            <i>mati@hotmail</i>
+                        </p>
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="box_copyright">
                 <hr class="hr">
-                <p><b>Dolce Rose © 2022</b></p>
+                <p class="text-copyright"><b>Dolce Rose © 2022</b></p>
             </div>
 
         </footer>
