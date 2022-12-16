@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-4">
-            <a href="index.php" class="navbar-brand logo-nav">DOLCE ROSE</a>
+    <nav class="navbar navbar-expand-sm px-4 background-nav">
+            <a href="index.php" class="navbar-brand logo-nav"><b>DOLCE ROSE</b></a>
             <div id="navbarNav"> 
                 <ul class="navbar-nav gap-3">
                     <li class="nav-item dropdown">
