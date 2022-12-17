@@ -18,37 +18,57 @@
 
 <body>
     <nav class="navbar navbar-expand-sm px-4 background-nav">
-            <a href="index.php" class="navbar-brand logo-nav"><b>DOLCE ROSE</b></a>
-            <div id="navbarNav"> 
-                <ul class="navbar-nav gap-3">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mantenedores</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="materias_primas.php">Materias Primas</a></li>
-                            <li><a class="dropdown-item" href="productos.php">Productos</a></li>
-                            <li><a class="dropdown-item" href="proveedores.php">Proveedores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="recetas_productos.php">Recetas de Productos</a></li>
-                        </ul>
-                    </li>
+        <a href="index.php" class="navbar-brand logo-nav"><b>DOLCE ROSE</b></a>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Transacciones</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="registrar_compras.php">Registrar Compras</a></li>
-                            <li><a class="dropdown-item" href="registrar_producciones.php">Registrar Producciones</a></li>
-                        </ul>
-                    </li>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Listados</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="listado_compras.php">Listado de Compras por fechas</a></li>
-                            <li><a class="dropdown-item" href="listado_producciones.php">Listado de Producciones por fechas</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="listado_stock_critico.php">Listado de Materias Primas con Stock Crítico</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Mantenedores</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="materias_primas.php">Materias Primas</a></li>
+                        <li><a class="dropdown-item" href="productos.php">Productos</a></li>
+                        <li><a class="dropdown-item" href="proveedores.php">Proveedores</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="recetas_productos.php">Recetas de Productos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Transacciones</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="registrar_compras.php">Registrar Compras</a></li>
+                        <li><a class="dropdown-item" href="registrar_producciones.php">Registrar Producciones</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Listados</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="listado_compras.php">Listado de Compras por fechas</a>
+                        </li>
+                        <li><a class="dropdown-item" href="listado_producciones.php">Listado de Producciones por
+                                fechas</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="listado_stock_critico.php">Listado de Materias Primas con
+                                Stock Crítico</a></li>
+                        <li><a class="dropdown-item" href="listado_productos_costos.php">Listado de Productos con Costo
+                                Actual</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </nav>

@@ -1,14 +1,15 @@
 <?php include("db.php") ?>
 <?php include("header.php") ?>
 
+<main class="container-fluid">
+
     <!-- TITLE -->
-    <div class="row text-center">
+    <div class="row text-center my-1">
         <h3>Mantenedor de Materias Primas</h3>
     </div>
     
-    <main class="container-fluid p-2">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-12 col-sm-12 col-md-4">
                 <!-- FORM -->
                 <div class="card card-body">
                     <form action="" name="frm_materias_primas" id="frm_materias_primas" method="POST">
@@ -39,9 +40,10 @@
                     </form>
                 </div>
             </div>
+            
             <!-- TABLE -->
-            <div class="col-md-8">
-                <table class="table table-bordered table-striped">
+            <div class="col-12 col-sm-12 col-md-8 my-2 my-md-0">
+                <table class="table table-sm table-bordered table-secondary table-striped">
                     <thead>
                         <tr>
                             <th class="text-center">ID</th>

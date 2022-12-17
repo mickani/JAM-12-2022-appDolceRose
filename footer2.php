@@ -1,6 +1,6 @@
 <footer class="bg-light text-center text-md-start">
-    <div class="text-center p-1 footer2" style="background-color: #fa8890">
-        <h6>Dolce Rose © 2022</h6>
+    <div class="text-center p-1 footer2">
+        <h6 class="text-footer-2">/Dolce Rose © 2022/</h6>
     </div>
 </footer>
 
